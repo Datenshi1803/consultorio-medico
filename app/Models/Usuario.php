@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Usuario extends Model
 {
     use HasFactory;
+
+    protected $table = 'usuarios';
+
+    protected $fillable = ['correo', 'contrasena', 'rol'];
+
+    public function paciente()
+    {
+        return $this->hasOne(Paciente::class);
+    }
 }
