@@ -2,6 +2,7 @@
 use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\MedicoController;  // <-- Agrega esto
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EspecialidadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,4 @@ Route::resource('pacientes', PacienteController::class)->except(['show']);
 
 // CRUD completo de Médicos
 Route::resource('medicos', MedicoController::class);
+Route::resource('especialidades', EspecialidadController::class); // <-- AÑADIDO
