@@ -9,6 +9,7 @@ use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\NotificacionController;
 use App\Http\Controllers\CitaController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\UsuarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,7 +67,7 @@ Route::middleware(['auth'])->group(function () {
     return redirect('/');         // Redirige a login
     })->name('logout');
 
-    Route::middleware(['auth'])->get('/usuario', function () {
-    return view('usuario');
-    })->name('usuario');
+
+Route::middleware(['auth'])->get('/usuario', [UsuarioController::class, 'index'])->name('usuario');
+
 });
