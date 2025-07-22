@@ -47,5 +47,10 @@ class User extends Authenticatable
 {
     return $this->hasOne(\App\Models\Paciente::class);
 }
+public function medico()
+{
+    return $this->hasOne(\App\Models\Medico::class);
+}
+
 
 }

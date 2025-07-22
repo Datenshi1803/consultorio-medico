@@ -15,7 +15,7 @@
         <!-- Hero Section personalizada -->
         <section class="hero">
             <div class="container">
-                <h3 class="text-primary fw-bold">Bienvenido, Dr. {{ $doctor->nombre }} {{ $doctor->apellido }}</h3>
+                <h3 class="text-primary fw-bold">Bienvenido, Dr.</h3>
                 <p class="text-muted">Desde este panel puedes gestionar tus citas, revisar tu horario de trabajo y estar al tanto de tus responsabilidades médicas.</p>
             </div>
         </section>

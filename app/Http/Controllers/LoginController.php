@@ -29,7 +29,7 @@ class LoginController extends Controller
                 case 'paciente':
                     return redirect()->route('paciente.inicio'); // '/inicio-paciente'
                 case 'medico':
-                    return redirect()->route('medico.inicio'); // '/inicio-medico'
+                    return redirect()->route('doctor.inicio'); // '/inicio-medico'
                 case 'administrador':
                     return redirect()->route('admin.inicio'); // '/inicio-admin'
                 default:

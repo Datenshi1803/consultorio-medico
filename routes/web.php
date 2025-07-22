@@ -71,6 +71,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/doctor/inicio', [DoctorController::class, 'inicio'])->name('doctor.inicio');
     Route::get('/doctor/citas', [DoctorCitaController::class, 'index'])->name('doctor.citas');
     Route::get('/doctor/horario', [HorarioController::class, 'horario'])->name('doctor.horario');
+    Route::view('/doctor/notificaciones', 'doctor.notificaciones')->name('doctor.notificaciones');
+    Route::view('/doctor/ver-pacientes', 'doctor.verpacientes')->name('doctor.verpacientes');
 
     // Logout
     Route::get('/logout', function () {
