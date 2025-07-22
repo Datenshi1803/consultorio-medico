@@ -25,12 +25,14 @@
             color: #1E88E5;
         }
         .welcome-img {
-            width: 100%;
-            max-height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
+    width: 100%;
+    max-width: 175px; 
+    height: auto;
+    display: block;
+    margin: 0 auto 20px auto;
+    border-radius: 8px;
+}
+
         .action-buttons {
             display: flex;
             justify-content: center;
@@ -90,7 +92,8 @@
 
         {{-- Contenido si está autenticado --}}
         <div class="main-container">
-            <img src="https://cdn.pixabay.com/photo/2017/08/06/22/01/doctors-2596229_1280.jpg" alt="Bienvenida" class="welcome-img">
+            <img src="{{ asset('images/imagen.webp') }}" alt="Bienvenida" class="welcome-img">
+
 
             <h4>Bienvenido, {{ Auth::user()->name }}</h4>
             <p class="mt-3">Selecciona una opción:</p>
@@ -104,15 +107,15 @@
 
     <a href="/citas" class="btn btn-circle text-white">
         <div class="d-flex flex-column align-items-center">
-            <i class="fas fa-calendar-plus fa-2x mb-2"></i>
-            <span>Agendar Citas</span>
+            <i class="fas fa-calendar-check fa-2x mb-2"></i>
+            <span>Ver Citas</span>
         </div>
     </a>
 
     <a href="/agendar" class="btn btn-circle text-white">
         <div class="d-flex flex-column align-items-center">
-            <i class="fas fa-calendar-check fa-2x mb-2"></i>
-            <span>Ver Citas</span>
+            <i class="fas fa-calendar-plus fa-2x mb-2"></i>
+            <span>Agendar Citas</span>
         </div>
     </a>
 </div>
