@@ -11,7 +11,19 @@ class Medico extends Model
 
     protected $table = 'medicos';
 
-    protected $fillable = ['nombre', 'apellido', 'fechanacimiento', 'tipo_sangre', 'especialidad_id'];
+    protected $fillable = [
+        'usuario_id',
+        'nombre',
+        'apellido',
+        'fechanacimiento',
+        'tipo_sangre',
+        'especialidad_id'
+    ];
+
+    public function usuario()
+    {
+        return $this->belongsTo(Usuario::class, 'usuario_id');
+    }
 
     public function especialidad()
     {

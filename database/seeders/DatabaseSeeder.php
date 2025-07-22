@@ -15,9 +15,9 @@ class DatabaseSeeder extends Seeder
     public function run()
 {
     $this->call([
-        UsuarioSeeder::class,
-        EspecialidadSeeder::class,
-        MedicoSeeder::class,
+        UserSeeder::class,         // Primero usuarios (tabla users)
+        EspecialidadSeeder::class, // Luego especialidades
+        MedicoSeeder::class,       // Luego médicos (referencia a users)
         PacienteSeeder::class,
         HorarioSeeder::class,
         CitaSeeder::class,

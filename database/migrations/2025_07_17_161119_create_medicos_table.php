@@ -14,12 +14,15 @@ return new class extends Migration
     public function up(){
     Schema::create('medicos', function (Blueprint $table) {
         $table->id();
+        $table->unsignedBigInteger('usuario_id'); // FK a usuarios
         $table->string('nombre');
         $table->string('apellido');
         $table->date('fechanacimiento');
         $table->string('tipo_sangre')->nullable();
         $table->foreignId('especialidad_id')->constrained('especialidades')->onDelete('cascade');
         $table->timestamps();
+
+        $table->foreign('usuario_id')->references('id')->on('users')->onDelete('cascade');
     });
 }
 

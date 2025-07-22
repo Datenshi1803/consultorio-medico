@@ -18,7 +18,18 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect('/');
+            $user = Auth::user();
+
+            switch ($user->rol) {
+                case 'paciente':
+                    return redirect('/inicio-paciente');
+                case 'medico':
+                    return redirect('/inicio-medico');
+                case 'administrador':
+                    return redirect('/inicio-admin');
+                default:
+                    return redirect('/');
+            }
         }
 
         return back()->with('error', 'Credenciales inválidas');
