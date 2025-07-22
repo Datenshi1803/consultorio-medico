@@ -31,7 +31,7 @@ return new class extends Migration
         $table->text('alergias')->nullable();
         $table->text('medicamentos')->nullable();
         $table->text('historial_cirugias')->nullable();
-        $table->foreignId('usuario_id')->constrained('usuarios')->onDelete('cascade');
+        $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
         $table->timestamps();
     });
 }

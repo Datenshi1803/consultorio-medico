@@ -24,11 +24,12 @@
         @else
             @foreach ($citas as $cita)
                 <div class="card border-blue mb-3 p-3 shadow-sm">
-                    <p><strong>Fecha:</strong> {{ $cita->fecha }}</p>
-                    <p><strong>Hora:</strong> {{ $cita->hora }}</p>
-                    <p><strong>Especialidad:</strong> {{ $cita->especialidad }}</p>
-                    <p><strong>Motivo:</strong> {{ $cita->motivo }}</p>
+                <p><strong>Fecha:</strong> {{ $cita->fecha }}</p>
+                <p><strong>Hora:</strong> {{ $cita->hora }}</p>
+                <p><strong>Motivo:</strong> {{ $cita->motivo }}</p>
+                <p><strong>Estado:</strong> {{ $cita->estado }}</p>
                 </div>
+
             @endforeach
         @endif
     </div>

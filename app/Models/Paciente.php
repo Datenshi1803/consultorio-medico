@@ -18,11 +18,14 @@ class Paciente extends Model
         'alergias', 'medicamentos', 'historial_cirugias', 'usuario_id'
     ];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
     public function usuario()
     {
-        return $this->belongsTo(Usuario::class);
+        return $this->belongsTo(Usuario::class, 'usuario_id');
     }
-
     public function citas()
     {
         return $this->hasMany(Cita::class);

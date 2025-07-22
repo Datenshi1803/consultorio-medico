@@ -24,7 +24,7 @@ public function run()
     $usuarioMedico = \App\Models\User::where('rol', 'medico')->first();
 
     Medico::create([
-        'usuario_id' => $usuarioMedico ? $usuarioMedico->id : null,
+        'user_id' => $usuarioMedico ? $usuarioMedico->id : null,
         'nombre' => 'Carlos',
         'apellido' => 'Ramírez',
         'fechanacimiento' => '1980-04-10',

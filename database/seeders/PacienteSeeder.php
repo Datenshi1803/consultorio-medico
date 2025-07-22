@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Paciente;
+use App\Models\User;
 use App\Models\Usuario;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -18,7 +19,7 @@ class PacienteSeeder extends Seeder
 
 public function run()
 {
-    $usuario = Usuario::where('rol', 'paciente')->first();
+    $usuario = User::where('rol', 'paciente')->first();
 
     Paciente::create([
         'nombre1' => 'Juan',
@@ -37,7 +38,7 @@ public function run()
         'alergias' => 'Penicilina',
         'medicamentos' => 'Salbutamol',
         'historial_cirugias' => 'Apendicectomía',
-        'usuario_id' => $usuario->id,
+        'user_id' => $usuario->id,
     ]);
 }
 
