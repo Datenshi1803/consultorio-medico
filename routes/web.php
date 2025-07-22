@@ -25,20 +25,35 @@ Route::post('/login', [LoginController::class, 'login'])->name('login.custom');
 
 // RUTAS PROTEGIDAS POR AUTENTICACIÓN
 Route::middleware(['auth'])->group(function () {
-    Route::get('/citas', [CitaController::class, 'index'])->name('citas.index');
-});
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/perfil', [PacienteController::class, 'show'])->name('paciente.perfil');
-    Route::put('/perfil', [PacienteController::class, 'update'])->name('paciente.update');
-});
+    // PACIENTE
+    Route::view('/inicio-paciente', 'paciente.usuario')->name('paciente.inicio');
+    Route::view('/paciente/citas', 'paciente.citas')->name('paciente.citas');
+    Route::view('/paciente/notificaciones', 'paciente.notificaciones')->name('paciente.notificaciones');
+    Route::view('/paciente/perfil', 'paciente.perfil')->name('paciente.perfil');
 
-Route::middleware(['auth'])->group(function () {
+    // MÉDICO
+    Route::view('/inicio-medico', 'medico.inicio')->name('medico.inicio');
+    Route::view('/medico/citas', 'medico.citas')->name('medico.citas');
+    Route::view('/medico/horario', 'medico.horario')->name('medico.horario');
+    Route::view('/medico/notificaciones', 'medico.notificaciones')->name('medico.notificaciones');
+    Route::view('/medico/ver-pacientes', 'medico.verpacientes')->name('medico.verpacientes');
+
+    // ADMIN
+    Route::view('/inicio-admin', 'admin.inicio')->name('admin.inicio');
+
+    // NOTIFICACIONES compartidas
     Route::get('/notificaciones', [NotificacionController::class, 'index'])->name('notificaciones.index');
     Route::post('/notificaciones/{id}/leida', [NotificacionController::class, 'marcarComoLeida'])->name('notificaciones.leida');
-});
 
-Route::middleware(['auth'])->group(function () {
+    // PERFIL paciente (desde controlador)
+    Route::get('/perfil', [PacienteController::class, 'show'])->name('paciente.perfil.controller');
+    Route::put('/perfil', [PacienteController::class, 'update'])->name('paciente.update');
+
+    // CITAS generales
+    Route::get('/citas', [CitaController::class, 'index'])->name('citas.index');
+
+    // DOCTOR desde controladores
     Route::get('/doctor/inicio', [DoctorController::class, 'inicio'])->name('doctor.inicio');
     Route::get('/doctor/citas', [DoctorCitaController::class, 'index'])->name('doctor.citas');
     Route::get('/doctor/horario', [HorarioController::class, 'horario'])->name('doctor.horario');

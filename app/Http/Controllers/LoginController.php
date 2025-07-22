@@ -18,15 +18,20 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
+            
             $user = Auth::user();
 
+            // Guardamos el nombre en sesión
+            $request->session()->put('usuario_nombre', $user->name);
+
+            // Redirección según el rol
             switch ($user->rol) {
                 case 'paciente':
-                    return redirect('/inicio-paciente');
+                    return redirect()->route('paciente.inicio'); // '/inicio-paciente'
                 case 'medico':
-                    return redirect('/inicio-medico');
+                    return redirect()->route('medico.inicio'); // '/inicio-medico'
                 case 'administrador':
-                    return redirect('/inicio-admin');
+                    return redirect()->route('admin.inicio'); // '/inicio-admin'
                 default:
                     return redirect('/');
             }
