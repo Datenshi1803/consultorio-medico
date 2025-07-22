@@ -24,14 +24,18 @@
         @else
             @foreach ($citas as $cita)
                 <div class="card border-blue mb-3 p-3 shadow-sm">
-                <p><strong>Fecha:</strong> {{ $cita->fecha }}</p>
-                <p><strong>Hora:</strong> {{ $cita->hora }}</p>
-                <p><strong>Motivo:</strong> {{ $cita->motivo }}</p>
-                <p><strong>Estado:</strong> {{ $cita->estado }}</p>
+                    <p><strong>Medico:</strong> {{ $cita->medico->nombre }}</p>
+                    <p><strong>Fecha:</strong> {{ $cita->fecha }}</p>
+                    <p><strong>Hora:</strong> {{ $cita->hora }}</p>
+                    <p><strong>Motivo:</strong> {{ $cita->motivo }}</p>
+                    <p><strong>Estado:</strong> {{ $cita->estado }}</p>
                 </div>
 
             @endforeach
         @endif
+         <div class="text-center mt-4">
+            <a href="{{ route('paciente.inicio') }}" class="btn btn-primary" style="background-color: #1E88E5;">← Regresar</a>
+        </div>
     </div>
 </body>
 </html>

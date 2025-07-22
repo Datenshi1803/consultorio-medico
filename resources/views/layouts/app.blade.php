@@ -9,8 +9,8 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Vite -->
-    @vite(['resources/js/app.js'])
+    
+    
 
     <style>
         body {
@@ -75,7 +75,7 @@
     <!-- NAVBAR -->
     <nav class="bg-header-bottom">
         <div class="container d-flex justify-content-center py-2">
-            <a class="nav-link px-3" href="#">Inicio</a>
+            <a class="nav-link px-3" href="{{ route('admin.inicio') }}">Inicio</a>
             <a class="nav-link px-3" href="#">Citas</a>
             <a class="nav-link px-3" href="#">Especialistas</a>
             <a class="nav-link px-3" href="#">Contacto</a>
@@ -94,6 +94,8 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+
 </body>
 
 </html>

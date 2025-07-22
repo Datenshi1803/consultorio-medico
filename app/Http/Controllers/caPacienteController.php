@@ -6,11 +6,11 @@ use Illuminate\Http\Request;
 use App\Models\Paciente;
 use Illuminate\Support\Facades\Auth;
 
-class PacienteController extends Controller
+class caPacienteController extends Controller
 {
     public function show()
     {
-        $paciente = Paciente::where('usuario_id', Auth::id())->firstOrFail();
+        $paciente = Paciente::where('user_id', Auth::id())->firstOrFail();
         return view('paciente.perfil', compact('paciente'));
     }
     public function update(Request $request)

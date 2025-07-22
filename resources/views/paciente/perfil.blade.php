@@ -32,7 +32,7 @@
                 @csrf
                 @method('PUT')
 
-                @foreach (['alergias', 'padecimientos', 'predisposiciones', 'medicamentos', 'historial_cirugias'] as $campo)
+                @foreach (['nombre1','nombre2','apellido1','apellido2','fechadenacimiento','tipo_sangre','padecimientos_anteriores','predisposiciones','genero','telefono_principal','telefono_emergencia','correo','direccion','alergias','medicamentos','historial_cirugias'] as $campo)
                     <div class="mb-3">
                         <label class="form-label text-muted text-capitalize" for="{{ $campo }}">{{ ucfirst($campo) }}</label>
                         <input type="text" id="{{ $campo }}" name="{{ $campo }}" value="{{ $paciente->$campo }}" class="form-control">
@@ -40,6 +40,7 @@
                 @endforeach
 
                 <button type="submit" class="btn btn-primary">Actualizar perfil</button>
+                <a href="{{ route('paciente.inicio') }}" class="btn btn-secondary ms-2"style="background-color: #1E88E5;">← Regresar</a>
             </form>
         </div>
     </div>

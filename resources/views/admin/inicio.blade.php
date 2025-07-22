@@ -25,7 +25,7 @@
             <div class="container">
                 <div class="row g-4 justify-content-center">
                     <div class="col-md-4">
-                        <a href="{{ route('admin.pacientes.index') }}" class="card-link">
+                        <a href="{{ route('pacientes.index') }}" class="card-link">
                             <div class="feature-box text-center border rounded p-4 bg-white h-100 shadow-sm">
                                 <h5>Pacientes</h5>
                                 <p>Gestiona el registro, edición y eliminación de pacientes.</p>
@@ -33,7 +33,7 @@
                         </a>
                     </div>
                     <div class="col-md-4">
-                        <a href="{{ route('admin.medicos.index') }}" class="card-link">
+                        <a href="{{ route('medicos.index') }}" class="card-link">
                             <div class="feature-box text-center border rounded p-4 bg-white h-100 shadow-sm">
                                 <h5>Médicos</h5>
                                 <p>Administra la información de los médicos del consultorio.</p>
@@ -41,7 +41,7 @@
                         </a>
                     </div>
                     <div class="col-md-4">
-                        <a href="{{ route('admin.especialidades.index') }}" class="card-link">
+                        <a href="{{ route('especialidades.index') }}" class="card-link">
                             <div class="feature-box text-center border rounded p-4 bg-white h-100 shadow-sm">
                                 <h5>Especialidades</h5>
                                 <p>Agrega, edita o elimina especialidades médicas.</p>
@@ -49,7 +49,7 @@
                         </a>
                     </div>
                     <div class="col-md-4">
-                        <a href="{{ route('admin.horarios.index') }}" class="card-link">
+                        <a href="{{ route('schedules.index') }}" class="card-link">
                             <div class="feature-box text-center border rounded p-4 bg-white h-100 shadow-sm">
                                 <h5>Horarios</h5>
                                 <p>Gestiona los horarios de trabajo de los médicos.</p>
@@ -57,7 +57,7 @@
                         </a>
                     </div>
                     <div class="col-md-4">
-                        <a href="{{ route('admin.citas.exportar') }}" class="card-link">
+                        <a href="{{ route('citas.exportar') }}" class="card-link">
                             <div class="feature-box text-center border rounded p-4 bg-white h-100 shadow-sm">
                                 <h5>Exportar Citas</h5>
                                 <span class="badge bg-success">Exportar</span>

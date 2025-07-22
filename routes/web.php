@@ -6,7 +6,6 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HorarioController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\DoctorCitaController;
-use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\NotificacionController;
 use App\Http\Controllers\CitaController;
 use Illuminate\Support\Facades\Auth;
@@ -45,8 +44,17 @@ Route::middleware(['auth'])->group(function () {
     Route::view('/medico/notificaciones', 'medico.notificaciones')->name('medico.notificaciones');
     Route::view('/medico/ver-pacientes', 'medico.verpacientes')->name('medico.verpacientes');
 
-    // ADMIN
+    // ADMIN (vista principal del panel)
     Route::view('/inicio-admin', 'admin.inicio')->name('admin.inicio');
+
+    // Subgrupo para rutas admin
+        Route::resource('pacientes', PacienteController::class)->except(['show']);
+        Route::resource('medicos', MedicoController::class);
+        Route::resource('especialidades', EspecialidadController::class);
+        Route::resource('schedules', HorarioController::class);
+
+        // Ruta para exportar citas
+        Route::get('/citas/exportar', [CitaController::class, 'exportar'])->name('citas.exportar');
 
     // NOTIFICACIONES compartidas
     Route::get('/notificaciones', [NotificacionController::class, 'index'])->name('notificaciones.index');
@@ -64,21 +72,16 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/doctor/citas', [DoctorCitaController::class, 'index'])->name('doctor.citas');
     Route::get('/doctor/horario', [HorarioController::class, 'horario'])->name('doctor.horario');
 
+    // Logout
     Route::get('/logout', function () {
-    Auth::logout();                     // Cierra sesión
-    session()->invalidate();           // Invalida la sesión
-    session()->regenerateToken();      // Regenera el token CSRF
-    return redirect('/');         // Redirige a login
+        Auth::logout();
+        session()->invalidate();
+        session()->regenerateToken();
+        return redirect('/');
     })->name('logout');
 
-    Route::middleware(['auth'])->get('/usuario', function () {
-    return view('usuario');
-    })->name('usuario');
-    return redirect()->route('pacientes.index');
+    Route::get('/redirigir-a-pacientes', function () {
+        return redirect()->route('admin.pacientes.index');
+    });
 });
 
-Route::resource('pacientes', PacienteController::class)->except(['show']);
-
-// CRUD completo de Médicos
-Route::resource('medicos', MedicoController::class);
-Route::resource('especialidades', EspecialidadController::class); // <-- AÑADIDO

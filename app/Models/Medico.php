@@ -12,7 +12,7 @@ class Medico extends Model
     protected $table = 'medicos';
 
     protected $fillable = [
-        'usuario_id',
+        'user_id',
         'nombre',
         'apellido',
         'fechanacimiento',
@@ -20,9 +20,9 @@ class Medico extends Model
         'especialidad_id'
     ];
 
-    public function usuario()
+    public function user()
     {
-        return $this->belongsTo(Usuario::class, 'usuario_id');
+        return $this->belongsTo(Usuario::class, 'user_id');
     }
 
     public function especialidad()
@@ -44,4 +44,5 @@ class Medico extends Model
     {
         return $this->hasMany(Notificacion::class);
     }
+
 }
