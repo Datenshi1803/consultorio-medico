@@ -1,5 +1,6 @@
 <?php
-
+use App\Http\Controllers\PacienteController;
+use App\Http\Controllers\MedicoController;  // <-- Agrega esto
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HorarioController;
@@ -9,11 +10,15 @@ use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\NotificacionController;
 use App\Http\Controllers\CitaController;
 use Illuminate\Support\Facades\Auth;
-
+use App\Http\Controllers\EspecialidadController;
+use App\Http\Controllers\caPacienteController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
+|
+| Aquí se registran las rutas web para tu aplicación.
+|
 */
 
 // RUTAS PÚBLICAS
@@ -48,8 +53,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/notificaciones/{id}/leida', [NotificacionController::class, 'marcarComoLeida'])->name('notificaciones.leida');
 
     // PERFIL paciente (desde controlador)
-    Route::get('/perfil', [PacienteController::class, 'show'])->name('paciente.perfil.controller');
-    Route::put('/perfil', [PacienteController::class, 'update'])->name('paciente.update');
+    Route::get('/perfil', [caPacienteController::class, 'show'])->name('paciente.perfil.controller');
+    Route::put('/perfil', [caPacienteController::class, 'update'])->name('paciente.update');
 
     // CITAS generales
     Route::get('/citas', [CitaController::class, 'index'])->name('citas.index');
@@ -69,4 +74,11 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['auth'])->get('/usuario', function () {
     return view('usuario');
     })->name('usuario');
+    return redirect()->route('pacientes.index');
 });
+
+Route::resource('pacientes', PacienteController::class)->except(['show']);
+
+// CRUD completo de Médicos
+Route::resource('medicos', MedicoController::class);
+Route::resource('especialidades', EspecialidadController::class); // <-- AÑADIDO
