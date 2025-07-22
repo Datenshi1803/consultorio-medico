@@ -45,7 +45,7 @@
         <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link active" href="#">Inicio</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Citas</a></li>
+                <li class="nav-item"><a class="nav-link" href="citas">Citas</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Especialistas</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
             </ul>
