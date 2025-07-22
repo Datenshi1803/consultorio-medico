@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HorarioController;
 use App\Http\Controllers\DoctorController;
@@ -8,7 +10,8 @@ use App\Http\Controllers\DoctorCitaController;
 use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\NotificacionController;
 use App\Http\Controllers\CitaController;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\AppointmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,18 +45,4 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/doctor/inicio', [DoctorController::class, 'inicio'])->name('doctor.inicio');
     Route::get('/doctor/citas', [DoctorCitaController::class, 'index'])->name('doctor.citas');
-    Route::get('/doctor/horario', [HorarioController::class, 'horario'])->name('doctor.horario');
-});
-
-
-
-Route::get('/logout', function () {
-    Auth::logout();                     // Cierra sesión
-    session()->invalidate();           // Invalida la sesión
-    session()->regenerateToken();      // Regenera el token CSRF
-    return redirect('/login');         // Redirige a login
-})->name('logout');
-
-Route::middleware(['auth'])->get('/usuario', function () {
-    return view('usuario');
-})->name('usuario');
+    Route::
