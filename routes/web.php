@@ -64,7 +64,8 @@ Route::middleware(['auth'])->group(function () {
     Auth::logout();                     // Cierra sesión
     session()->invalidate();           // Invalida la sesión
     session()->regenerateToken();      // Regenera el token CSRF
-    return redirect('/');         // Redirige a login
+    return redirect()->route('login');
+
     })->name('logout');
 
 
