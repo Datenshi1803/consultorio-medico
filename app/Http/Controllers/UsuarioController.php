@@ -16,6 +16,7 @@ class UsuarioController extends Controller
                                       ->count();
 
 
-        return view('usuario', compact('notificacionesNoLeidas'));
+         return view('paciente.usuario', compact('notificacionesNoLeidas'));
+
     }
 }
