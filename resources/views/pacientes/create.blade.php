@@ -6,7 +6,9 @@
     <form action="{{ route('pacientes.store') }}" method="POST">
         @csrf
         @include('pacientes.form')
-        <button type="submit">Guardar</button>
+        <button type="submit" class="btn btn-primary">
+            <i class="fas fa-save"></i> Guardar
+        </button>
     </form>
 </div>
 @endsection
